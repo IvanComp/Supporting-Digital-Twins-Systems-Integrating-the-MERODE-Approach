@@ -1,0 +1,50 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+ 
+    	<!-- Database connection settings -->
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="connection.url">
+        	jdbc:hsqldb:file:database_file;shutdown=true;;hsqldb.write_delay=false
+        </property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">20</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        
+        <!-- Drop and re-create the database schema on startup 
+        <property name="hbm2ddl.auto">create</property> -->
+        
+        <property name="connection.autocommit">true</property> 
+
+        <mapping resource="src/dao/mappings/Registereddevice.hbm.xml"/>
+        <mapping resource="src/dao/mappings/RegistereddeviceState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Procedure.hbm.xml"/>
+        <mapping resource="src/dao/mappings/ProcedureState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Deviceresult.hbm.xml"/>
+        <mapping resource="src/dao/mappings/DeviceresultState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Featureofinterest.hbm.xml"/>
+        <mapping resource="src/dao/mappings/FeatureofinterestState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Platform.hbm.xml"/>
+        <mapping resource="src/dao/mappings/PlatformState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Property.hbm.xml"/>
+        <mapping resource="src/dao/mappings/PropertyState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Deviceusage.hbm.xml"/>
+        <mapping resource="src/dao/mappings/DeviceusageState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Platformdeployment.hbm.xml"/>
+        <mapping resource="src/dao/mappings/PlatformdeploymentState.hbm.xml"/>
+        <mapping resource="src/dao/mappings/Device.hbm.xml"/>
+        <mapping resource="src/dao/mappings/DeviceState.hbm.xml"/>
+        
+  </session-factory>
+</hibernate-configuration>

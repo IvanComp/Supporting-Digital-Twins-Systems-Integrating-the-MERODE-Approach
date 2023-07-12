@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.Property"
+        table="HIB_PROPERTY"
+        dynamic-update="false"
+        dynamic-insert="false"
+        discriminator-value="PropertyImpl"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <many-to-one
+            name="state"
+            class="dao.PropertyState"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PROPERTY_STATE_FK"
+        />
+        <property
+            name="name" 
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+			 		<many-to-one
+            name="featureofinterest"
+            class="dao.Featureofinterest"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="FEATUREOFINTEREST_FK"
+        />
+        <set
+            name="deviceusage"
+            lazy="false"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="PROPERTY_FK"
+              />
+
+              <one-to-many
+                  class="dao.Deviceusage"
+              />
+        </set>
+        <subclass
+            name="dao.PropertyImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="PropertyImpl"
+        >
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

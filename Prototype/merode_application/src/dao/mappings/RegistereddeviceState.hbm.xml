@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.RegistereddeviceState"
+        table="HIB_REGISTEREDDEVICE_STATE"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+        <subclass
+            name="dao.RegistereddeviceStateAllocated"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="RegistereddeviceStateAllocated"
+        >
+        </subclass>
+        <subclass
+            name="dao.RegistereddeviceStateEnded"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="RegistereddeviceStateEnded"
+        >
+        </subclass>
+        <subclass
+            name="dao.RegistereddeviceStateDeployed"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="RegistereddeviceStateDeployed"
+        >
+        </subclass>
+        <subclass
+            name="dao.RegistereddeviceStateExists"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="RegistereddeviceStateExists"
+        >
+        </subclass>
+  
+    </class>
+
+</hibernate-mapping>

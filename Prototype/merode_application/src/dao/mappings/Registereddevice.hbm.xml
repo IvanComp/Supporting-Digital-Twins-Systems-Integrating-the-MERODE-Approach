@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.Registereddevice"
+        table="HIB_REGISTEREDDEVICE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        discriminator-value="RegistereddeviceImpl"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <many-to-one
+            name="state"
+            class="dao.RegistereddeviceState"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="REGISTEREDDEVICE_STATE_FK"
+        />
+        <property
+            name="name" 
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+			 		<many-to-one
+            name="platform"
+            class="dao.Platform"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PLATFORM_FK"
+        />
+			 		<many-to-one
+            name="device"
+            class="dao.Device"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="DEVICE_FK"
+        />
+        <set
+            name="deviceusage"
+            lazy="false"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="REGISTEREDDEVICE_FK"
+              />
+
+              <one-to-many
+                  class="dao.Deviceusage"
+              />
+        </set>
+        <subclass
+            name="dao.RegistereddeviceImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="RegistereddeviceImpl"
+        >
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.DeviceState"
+        table="HIB_DEVICE_STATE"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+        <subclass
+            name="dao.DeviceStateAllocated"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceStateAllocated"
+        >
+        </subclass>
+        <subclass
+            name="dao.DeviceStateExists"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceStateExists"
+        >
+        </subclass>
+        <subclass
+            name="dao.DeviceStateEnded"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceStateEnded"
+        >
+        </subclass>
+  
+    </class>
+
+</hibernate-mapping>

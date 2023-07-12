@@ -1,0 +1,7 @@
+hibernate2.jar
+dom4j.jar
+ehcache-0.9.jar
+cglib-full-2.0.2.jar
+commons-collections.jar
+xml-apis.jar
+jta.jar

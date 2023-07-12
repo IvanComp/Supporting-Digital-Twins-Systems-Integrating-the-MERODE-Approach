@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.Deviceusage"
+        table="HIB_DEVICEUSAGE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        discriminator-value="DeviceusageImpl"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <many-to-one
+            name="state"
+            class="dao.DeviceusageState"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="DEVICEUSAGE_STATE_FK"
+        />
+        <property
+            name="name" 
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+			 		<many-to-one
+            name="platformdeployment"
+            class="dao.Platformdeployment"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PLATFORMDEPLOYMENT_FK"
+        />
+			 		<many-to-one
+            name="registereddevice"
+            class="dao.Registereddevice"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="REGISTEREDDEVICE_FK"
+        />
+			 		<many-to-one
+            name="procedure"
+            class="dao.Procedure"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PROCEDURE_FK"
+        />
+			 		<many-to-one
+            name="property"
+            class="dao.Property"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PROPERTY_FK"
+        />
+        <set
+            name="deviceresult"
+            lazy="false"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="DEVICEUSAGE_FK"
+              />
+
+              <one-to-many
+                  class="dao.Deviceresult"
+              />
+        </set>
+        <subclass
+            name="dao.DeviceusageImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceusageImpl"
+        >
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

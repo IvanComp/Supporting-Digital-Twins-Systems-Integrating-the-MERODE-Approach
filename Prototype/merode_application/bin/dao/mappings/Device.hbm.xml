@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.Device"
+        table="HIB_DEVICE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        discriminator-value="DeviceImpl"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <many-to-one
+            name="state"
+            class="dao.DeviceState"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="DEVICE_STATE_FK"
+        />
+        <property
+            name="name" 
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+        <set
+            name="registereddevice"
+            lazy="false"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="DEVICE_FK"
+              />
+
+              <one-to-many
+                  class="dao.Registereddevice"
+              />
+        </set>
+        <set
+            name="procedure"
+            lazy="false"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="DEVICE_FK"
+              />
+
+              <one-to-many
+                  class="dao.Procedure"
+              />
+        </set>
+        <subclass
+            name="dao.DeviceImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceImpl"
+        >
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

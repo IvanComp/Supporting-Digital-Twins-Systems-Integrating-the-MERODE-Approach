@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.DeviceusageState"
+        table="HIB_DEVICEUSAGE_STATE"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+        <subclass
+            name="dao.DeviceusageStateAllocated"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceusageStateAllocated"
+        >
+        </subclass>
+        <subclass
+            name="dao.DeviceusageStatePlanned"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceusageStatePlanned"
+        >
+        </subclass>
+        <subclass
+            name="dao.DeviceusageStateEnded"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceusageStateEnded"
+        >
+        </subclass>
+        <subclass
+            name="dao.DeviceusageStateStarted"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceusageStateStarted"
+        >
+        </subclass>
+        <subclass
+            name="dao.DeviceusageStateReady"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="DeviceusageStateReady"
+        >
+        </subclass>
+  
+    </class>
+
+</hibernate-mapping>

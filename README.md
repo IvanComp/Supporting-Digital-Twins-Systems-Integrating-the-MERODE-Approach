@@ -4,10 +4,10 @@ This is a repository for the 3rd International Workshop on Model-Driven Engineer
 
 # Table of contents
 <!--ts-->
-   * [The Approach](#index)
-   * [The Generic Domain Model](#model)
-   * [The Web Application](#webapp)
-   * [The Java Prototype](#java)
+   * [The Approach](#The-Approach)
+   * [The Generic Domain Model](#The-Generic-Domain-Model)
+   * [The Web Application](#The-Web-Application)
+   * [The Java Prototype](#The-Java-Prototype)
 <!--te-->
 
 # The Approach

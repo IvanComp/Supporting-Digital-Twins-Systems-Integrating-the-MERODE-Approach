@@ -15,20 +15,27 @@ This is a repository for the 3rd International Workshop on Model-Driven Engineer
 MERODE is a model-driven engineering approach that -besides a focus on model quality- includes an incremental development strategy that ensures a well-structured and scalable system that represent an effective base for capturing domain-specific knowledge and establishing effective information systems. This approach relies on the concept of Model-Driven Engineering (MDE) placing a strong focus on ensuring the quality of the data produced and managed by a standard model mapped from the Semantic Sensor Network (SSN) and SOSA Ontology.
 
 <p align="center">
-<img src="img/approach.pdf" width="300px" height="150px"/>
+<img src="img/approach.png" width="800px" height="500px"/>
 </p>
-
 
 # The Generic Domain Model 
 
 <p align="center">
-<img src="img/approach.pdf" width="300px" height="150px"/>
+<img src="img/model.png" width="800px" height="500px"/>
+</p>
+
+<p align="center">
+<img src="img/tableSpec.png" width="600px" height="300px"/>
 </p>
 
 
 # The Web Application
 
 The RESTful web application consists of a MAVEN project, offering a range of API services for each business event. The Domain Layer defines several business object types (EDG), each of which has a corresponding set of business event types specified in the Service Layer (OET). These business event types, which encompass actions such as creation, modification, termination, and more, can be performed through API services.
+
+<p align="center">
+<img src="img/Simulation.png" width="600px" height="300px"/>
+</p>
 
 # The Java Prototype
 

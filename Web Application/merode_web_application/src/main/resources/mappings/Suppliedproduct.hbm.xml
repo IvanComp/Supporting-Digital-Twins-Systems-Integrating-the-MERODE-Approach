@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.Suppliedproduct"
+        table="HIB_SUPPLIEDPRODUCT"
+        dynamic-update="false"
+        dynamic-insert="false"
+        discriminator-value="SuppliedproductImpl"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <many-to-one
+            name="state"
+            class="dao.SuppliedproductState"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SUPPLIEDPRODUCT_STATE_FK"
+        />
+        <property
+            name="price" 
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="PRICE"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+			 		<many-to-one
+            name="product"
+            class="dao.Product"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PRODUCT_FK"
+        />
+			 		<many-to-one
+            name="supplier"
+            class="dao.Supplier"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SUPPLIER_FK"
+        />
+        <set
+            name="poline"
+            lazy="false"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="SUPPLIEDPRODUCT_FK"
+              />
+
+              <one-to-many
+                  class="dao.Poline"
+              />
+        </set>
+        <subclass
+            name="dao.SuppliedproductImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="SuppliedproductImpl"
+        >
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.PolineState"
+        table="HIB_POLINE_STATE"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+        <subclass
+            name="dao.PolineStateAllocated"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="PolineStateAllocated"
+        >
+        </subclass>
+        <subclass
+            name="dao.PolineStateExists"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="PolineStateExists"
+        >
+        </subclass>
+        <subclass
+            name="dao.PolineStateEnded"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="PolineStateEnded"
+        >
+        </subclass>
+  
+    </class>
+
+</hibernate-mapping>

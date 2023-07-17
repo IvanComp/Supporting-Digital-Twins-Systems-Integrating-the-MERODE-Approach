@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class
+        name="dao.Poline"
+        table="HIB_POLINE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        discriminator-value="PolineImpl"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+
+        <discriminator
+            column="class"
+            type="string"
+        />
+
+        <many-to-one
+            name="state"
+            class="dao.PolineState"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="POLINE_STATE_FK"
+        />
+        <property
+            name="name" 
+            type="java.lang.String"
+            update="true"
+            insert="true"
+        >
+            <column
+                name="NAME"
+                sql-type="VARCHAR(256)"
+            />
+        </property>
+			 		<many-to-one
+            name="suppliedproduct"
+            class="dao.Suppliedproduct"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SUPPLIEDPRODUCT_FK"
+        />
+			 		<many-to-one
+            name="purchaseorder"
+            class="dao.Purchaseorder"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PURCHASEORDER_FK"
+        />
+        <subclass
+            name="dao.PolineImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="PolineImpl"
+        >
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

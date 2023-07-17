@@ -1,0 +1,101 @@
+Simulation time: 2023-07-14 09:49:29
+
+
++--------------------------+
+|   TesCav final report  |
+|-- PlatformDeployment --|
+Transitions-Pair 0/1
+Class attribute 0/1
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/3
+All-Methods 0/18
+All-one-loop-paths 0/1
+Association-end multiplicity 0/1
+All-Loops 0/1
+
+|-- DeviceResult --|
+Transitions-Pair 0/1
+Class attribute 0/2
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/2
+All-Methods 0/4
+
+|-- RegisteredDevice --|
+Transitions-Pair 0/4
+Class attribute 0/1
+All-states 0/4
+All-loop-free-paths 0/2
+All-transitions 0/7
+All-Methods 0/27
+All-one-loop-paths 0/4
+Association-end multiplicity 0/1
+All-Loops 0/3
+
+|-- Platform --|
+Transitions-Pair 0/1
+Class attribute 0/1
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/3
+All-Methods 0/40
+All-one-loop-paths 0/1
+Association-end multiplicity 0/2
+All-Loops 0/1
+
+|-- FeatureOfInterest --|
+Transitions-Pair 0/1
+Class attribute 0/1
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/3
+All-Methods 0/40
+All-one-loop-paths 0/1
+Association-end multiplicity 0/2
+All-Loops 0/1
+
+|-- Device --|
+Transitions-Pair 0/1
+Class attribute 0/1
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/3
+All-Methods 0/40
+All-one-loop-paths 0/1
+Association-end multiplicity 0/2
+All-Loops 0/1
+
+|-- Procedure --|
+Transitions-Pair 0/1
+Class attribute 0/1
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/3
+All-Methods 0/18
+All-one-loop-paths 0/1
+Association-end multiplicity 0/1
+All-Loops 0/1
+
+|-- Property --|
+Transitions-Pair 0/1
+Class attribute 0/1
+All-states 0/3
+All-loop-free-paths 0/1
+All-transitions 0/3
+All-Methods 0/18
+All-one-loop-paths 0/1
+Association-end multiplicity 0/1
+All-Loops 0/1
+
+|-- DeviceUsage --|
+Transitions-Pair 0/4
+Class attribute 0/1
+All-states 0/5
+All-loop-free-paths 0/2
+All-transitions 0/6
+All-Methods 0/28
+All-one-loop-paths 0/1
+Association-end multiplicity 0/1
+All-Loops 0/1
+
